@@ -4,7 +4,7 @@ app.use(express.urlencoded({ extended: true }));
 const https = require("https");
 const http = require("http");
 const client = require("@mailchimp/mailchimp_marketing");
-const port = 3000;
+const port = "3000";
 
 client.setConfig({
   apiKey: "98ce010510e6ed1e8f0f81024ca73f07-us20",
@@ -60,6 +60,6 @@ app.post("/failure", function (req, res) {
   res.redirect("/");
 });
 
-app.listen(port, function () {
+app.listen(process.env.PORT || port, function () {
   console.log(`Example app listening at http://localhost:${port}`);
 });
